@@ -20,8 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 module secuence(
     input entrada,
-	 input clk,
-	 input reset,
+    input clk,
+    input reset,
     output salida
     );
 
@@ -33,28 +33,29 @@ reg y;
 
 
 always @(posedge reset, posedge clk )
-	begin
-		if (reset)
-			state <= s0;
-		else
-			state <= nextstate;
-	end
+    begin
+        if (reset)
+            state <= s0;
+        else
+            state <= nextstate;
+    end
 
 
 always @(*)
-	begin
-		case(state)
-			s0: if(entrada) 
-					nextstate = s1;
-				 else
-				  nextstate = s0;
-			s1: if(entrada)
-			     nextstate = s1;
-				  else
-				  nextstate = s0;
-			endcase
-	end
-	assign salida = state & ~entrada ;
+    begin
+        case(state)
+            s0: if(entrada) 
+                    nextstate = s1;
+                else
+                    nextstate = s0;
+            s1: if(entrada)
+                    nextstate = s1;
+                else
+                    nextstate = s0;
+        endcase
+    end
+
+assign salida = state & ~entrada ;
 endmodule
 
 
