@@ -19,17 +19,17 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module counter(
-    input reset,
+     input reset,
 	 input pause,
 	 input lap,
 	 input lap1,
 	 input lap2,
 	 input lap3,
-    input clk_50M,
-    output [6:0] seven_seg,
-    output [3:0] an,
+     input clk_50M,
+     output [6:0] seven_seg,
+     output [3:0] an,
 	 output led0,
-    output led1,
+     output led1,
 	 output led2,
 	 output led3,
 	 output led4,
@@ -68,15 +68,10 @@ module counter(
 	reg [3:0] l3_seg1;
 	reg [3:0] l3_min;
 	
-	//reg [3:0] pause0;
-	//reg [3:0] pause1;
-	//reg [3:0] pause2;
-	//reg [3:0] pause3;
-	
 	reg [1:0] lap_count;
 	
-	parameter COUNT_50M  = 25000000; // para clock de 1s (segundo)
-	parameter COUNT_5M   = 2500000; // para clock de 0.1s (decimas)
+	//parameter COUNT_50M  = 25000000; // para clock de 1s (segundo)
+	//parameter COUNT_5M   = 2500000; // para clock de 0.1s (decimas)
 	parameter COUNT_05M  = 250000; // para clock de 0.01s (centesimas)
 	
 	decoder_2to4 D24(pos,an);
@@ -111,27 +106,27 @@ module counter(
 		if (reset)
 			begin
 				centesimas <= 4'b0000;
-				decimas <= 4'b0000;
-				segundos0 <= 4'b0000;
-				segundos1 <= 4'b0000;
-				minutos <= 4'b0000;
-				lap_count <= 2'b00;
-				l1_cen  <= 4'b0000;
-			   l1_dec  <= 4'b0000;
-			   l1_seg0 <= 4'b0000;
-			   l1_seg1 <= 4'b0000;
-				l1_min  <= 4'b0000;
+				decimas    <= 4'b0000;
+				segundos0  <= 4'b0000;
+				segundos1  <= 4'b0000;
+				minutos    <= 4'b0000;
+				lap_count  <= 2'b00;
+				l1_cen     <= 4'b0000;
+			    l1_dec     <= 4'b0000;
+			    l1_seg0    <= 4'b0000;
+			    l1_seg1    <= 4'b0000;
+				l1_min     <= 4'b0000;
 				
 				l2_cen  <= 4'b0000;
-			   l2_dec  <= 4'b0000;
-			   l2_seg0 <= 4'b0000;
-			   l2_seg1 <= 4'b0000;
+			    l2_dec  <= 4'b0000;
+			    l2_seg0 <= 4'b0000;
+			    l2_seg1 <= 4'b0000;
 				l2_min  <= 4'b0000;
 				
 				l3_cen  <= 4'b0000;
-			   l3_dec  <= 4'b0000;
-			   l3_seg0 <= 4'b0000;
-			   l3_seg1 <= 4'b0000;
+			    l3_dec  <= 4'b0000;
+			    l3_seg0 <= 4'b0000;
+			    l3_seg1 <= 4'b0000;
 				l3_min  <= 4'b0000;
 			end
 		else
@@ -167,7 +162,6 @@ module counter(
 				end
 				
 			end
-			//end
 			
 				if (centesimas == 4'b1001 && ~pause) //09 centesimas!
 					begin
