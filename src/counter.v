@@ -110,7 +110,9 @@ module counter(
 				segundos0  <= 4'b0000;
 				segundos1  <= 4'b0000;
 				minutos    <= 4'b0000;
+
 				lap_count  <= 2'b00;
+
 				l1_cen     <= 4'b0000;
 			    l1_dec     <= 4'b0000;
 			    l1_seg0    <= 4'b0000;
@@ -198,15 +200,6 @@ module counter(
 	end
 	
 
-	assign dp = (pos == 2) ? 1'b0:1'b1;
-	assign led0 = (minutos >= 1) ? 1'b1:1'b0;
-	assign led1 = (minutos >= 2) ? 1'b1:1'b0;
-	assign led2 = (minutos >= 3) ? 1'b1:1'b0;
-	assign led3 = (minutos >= 4) ? 1'b1:1'b0;		
-	assign led4 = (minutos >= 5) ? 1'b1:1'b0;
-	assign led5 = (minutos >= 6) ? 1'b1:1'b0;
-	assign led6 = (minutos >= 7) ? 1'b1:1'b0;
-	assign led7 = (minutos >= 8) ? 1'b1:1'b0;
 	
 always @(*)
 begin
@@ -218,6 +211,7 @@ begin
 			2: count = l1_seg0;
 			3: count = l1_seg1;
 		endcase
+        mins = l1_min
 	end
 	else
 		if (lap2)
@@ -228,6 +222,7 @@ begin
 			2: count = l2_seg0;
 			3: count = l2_seg1;
 		endcase
+        mins = l2_min
 		end
 		else
 		if (lap3)
@@ -238,6 +233,7 @@ begin
 				2: count = l3_seg0;
 				3: count = l3_seg1;
 			endcase
+        mins = l3_min
 		end
 		else
 		begin
@@ -247,6 +243,18 @@ begin
 			2: count = segundos0;
 			3: count = segundos1; 
 		endcase
+        mins = minutos
 	end
 end
+
+assign dp = (pos == 2) ? 1'b0:1'b1;
+assign led0 = (mins >= 1) ? 1'b1:1'b0;
+assign led1 = (mins >= 2) ? 1'b1:1'b0;
+assign led2 = (mins >= 3) ? 1'b1:1'b0;
+assign led3 = (mins >= 4) ? 1'b1:1'b0;		
+assign led4 = (mins >= 5) ? 1'b1:1'b0;
+assign led5 = (mins >= 6) ? 1'b1:1'b0;
+assign led6 = (mins >= 7) ? 1'b1:1'b0;
+assign led7 = (mins >= 8) ? 1'b1:1'b0;
+
 endmodule
