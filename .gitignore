@@ -6,3 +6,9 @@ tarea01-nsa-ssa.aux
 *.log
 
 *.toc
+
+.dvt/.vlog_inc_dir
+
+.dvt/.vlog_top_files
+
+.project
